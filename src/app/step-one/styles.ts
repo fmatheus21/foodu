@@ -4,25 +4,34 @@ import { StyleSheet } from "react-native";
 export const styles = StyleSheet.create({
   container: {
     flex: 1,
+  },
+  background: {
+    flex: 1,
+    flexDirection: "column",
+    justifyContent: "space-between",
+    padding: 10,
+  },
+  boxOne: {
+    flex: 2,
+    justifyContent: "flex-end",
+    alignItems: "center",
+  },
+  boxTwo: {
+    flex: 1,
     justifyContent: "center",
     alignItems: "center",
-    padding: 20,
-    backgroundColor: "#fff",
+  },
+  boxThree: {
+    flex: 1,
+    justifyContent: "flex-start",
+    alignItems: "center",
   },
   image: {
-    width: 200,
-    height: 200,
+    width: 250,
+    height: 250,
     marginBottom: 20,
   },
-  title: {
-    fontSize: 24,
-    fontWeight: "bold",
-    color: colors.green[400],
-    marginBottom: 10,
-  },
   description: {
-    fontSize: 14,
-    color: "#555",
     textAlign: "center",
     marginHorizontal: 30,
     marginBottom: 20,
@@ -41,19 +50,5 @@ export const styles = StyleSheet.create({
   activeDot: {
     backgroundColor: colors.green[400],
     width: 30,
-  },
-  button: {
-    backgroundColor: colors.green[400],
-    width: "100%",
-    height: 50,
-    borderRadius: 30,
-    justifyContent: "center",
-    alignItems: "center",
-  },
-  buttonText: {
-    color: "#fff",
-    fontSize: 16,
-    fontWeight: "bold",
-    textAlign: "center",
   },
 });
