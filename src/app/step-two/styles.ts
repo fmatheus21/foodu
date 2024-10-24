@@ -23,7 +23,7 @@ export const styles = StyleSheet.create({
   },
   boxThree: {
     flex: 1,
-    justifyContent: "flex-start",
+    justifyContent: "center",
     alignItems: "center",
   },
   image: {

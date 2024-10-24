@@ -23,7 +23,7 @@ export default function StepTwo() {
         </View>
 
         <View style={styles.boxTwo}>
-          <TitleOne title="Order for Food" />
+          <TitleOne title="Easy Payment" />
           <Description
             desccription="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
           eiusmod tempor incididunt ut labore et dolore magna aliqua."
@@ -38,7 +38,7 @@ export default function StepTwo() {
             <View style={styles.dot} />
           </View>
 
-          <Button title="Next" onPress={() => router.push("/step-one")} />
+          <Button title="Next" onPress={() => router.push("/step-three")} />
         </View>
       </ImageBackground>
     </View>
