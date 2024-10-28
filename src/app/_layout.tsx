@@ -7,7 +7,8 @@ export default function Layout() {
       screenOptions={{
         headerShown: false,
         contentStyle: {
-          backgroundColor: colors.gray[200],
+          backgroundColor: colors.white[100],
+          padding: 10,
         },
       }}
     />

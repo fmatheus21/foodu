@@ -38,7 +38,7 @@ export default function StepThree() {
             <View style={[styles.dot, styles.activeDot]} />
           </View>
 
-          <Button title="Next" onPress={() => router.push("/index")} />
+          <Button title="Next" onPress={() => router.push("/create-account")} />
         </View>
       </ImageBackground>
     </View>
