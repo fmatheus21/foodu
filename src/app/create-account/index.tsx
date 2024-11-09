@@ -1,18 +1,28 @@
 // CreateAccount.tsx
-import { View, Image, Alert } from "react-native";
+import React, { useState } from "react";
+import {
+  View,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  StyleSheet,
+  Image,
+  Alert,
+} from "react-native";
+import Checkbox from "expo-checkbox";
+import { FontAwesome, MaterialCommunityIcons } from "@expo/vector-icons";
 import { styles } from "./styles";
-import { Button } from "@/components/button";
-import { TitleOne } from "@/components/title-one";
 import { useRouter } from "expo-router";
 import { InputText } from "@/components/input-text";
-import { useState } from "react";
 import { InputTextMask } from "@/components/input-text-mask";
+import { colors } from "@/styles/colors";
 
 export default function CreateAccount() {
   const router = useRouter();
   const [phone, setPhone] = useState("");
   const [email, setEmail] = useState("");
   const [fullName, setFullName] = useState("");
+  const [rememberMe, setRememberMe] = useState(false);
 
   function handleSignUp() {
     if (!phone) {
@@ -29,43 +39,95 @@ export default function CreateAccount() {
 
   return (
     <View style={styles.container}>
-      <View style={styles.boxOne}>
-        <Image
-          style={styles.image}
-          source={require("@/assets/icon/logo.png")}
-        />
-        <TitleOne title="Create New Account" />
-      </View>
-      <View style={styles.boxTwo}>
-        <InputTextMask
-          type="cel-phone"
-          options={{
-            maskType: "BRL",
-            withDDD: true,
-            dddMask: "(99) ",
-          }}
-          icon="phone-iphone"
-          placeholder="Telefone"
-          keyboardType="numeric"
-          onChangeText={(value) => setPhone(value)}
-        />
-        <InputText
-          icon="email"
-          placeholder="Email"
-          keyboardType="email-address"
-          onChangeText={(value) => setEmail(value)}
-        />
-        <InputText
-          icon="person"
-          placeholder="Nome Completo"
-          secureTextEntry={false}
-          onChangeText={(value) => setFullName(value)}
-        />
+      {/* Botão de Voltar */}
+      <TouchableOpacity style={styles.backButton}>
+        <FontAwesome name="arrow-left" size={24} color="black" />
+      </TouchableOpacity>
+
+      {/* Logo */}
+      <View style={styles.logoContainer}>
+        <Image source={require("@/assets/icon/logo.png")} style={styles.logo} />
       </View>
 
-      <View style={styles.boxThree}>
-        <Button title="Sign Up" onPress={() => handleSignUp()} />
+      <Text style={styles.title}>Create New Account</Text>
+
+      {/* Input de Telefone */}
+      <InputTextMask
+        type="cel-phone"
+        options={{
+          maskType: "BRL",
+          withDDD: true,
+          dddMask: "(99) ",
+        }}
+        icon="phone-iphone"
+        placeholder="Telefone"
+        keyboardType="numeric"
+        onChangeText={(value) => setPhone(value)}
+      />
+
+      {/* Input de Email */}
+      <InputText
+        icon="email"
+        placeholder="Email"
+        keyboardType="email-address"
+        secureTextEntry={false}
+        onChangeText={(value) => setEmail(value)}
+      />
+
+      {/* Input Nome Completo */}
+      <InputText
+        icon="person"
+        placeholder="Nome Completo"
+        secureTextEntry={false}
+        onChangeText={(value) => setFullName(value)}
+      />
+
+      {/* Checkbox "Remember Me" */}
+      <View style={styles.checkboxContainer}>
+        <Checkbox
+          style={styles.checkbox}
+          value={rememberMe}
+          onValueChange={setRememberMe}
+          color={rememberMe ? colors.green[400] : undefined}
+        />
+        <Text style={styles.checkboxLabel}>Remember me</Text>
       </View>
+
+      {/* Botão de Cadastro */}
+      <TouchableOpacity style={styles.signUpButton}>
+        <Text style={styles.signUpButtonText}>Sign up</Text>
+      </TouchableOpacity>
+
+      {/* Opções de Login Social */}
+      <Text style={styles.orText}>or continue with</Text>
+      <View style={styles.socialContainer}>
+        <TouchableOpacity style={styles.socialIconView}>
+          <Image
+            source={require("@/assets/icon/facebook.png")}
+            style={styles.socialIcon}
+          />
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.socialIconView}>
+          <Image
+            source={require("@/assets/icon/google.png")}
+            style={styles.socialIcon}
+          />
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.socialIconView}>
+          <Image
+            source={require("@/assets/icon/apple.png")}
+            style={styles.socialIcon}
+          />
+        </TouchableOpacity>
+      </View>
+
+      {/* Link para Login */}
+      <TouchableOpacity>
+        <Text style={styles.signInText}>
+          Already have an account?{" "}
+          <Text style={styles.signInLink}>Sign in</Text>
+        </Text>
+      </TouchableOpacity>
     </View>
   );
 }
